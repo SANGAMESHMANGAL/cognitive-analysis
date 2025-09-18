@@ -194,12 +194,11 @@ export function PersonaDistribution({ data }: PersonaDistributionProps) {
         <Legend 
           verticalAlign="bottom" 
           height={36}
-          formatter={(value, entry) => {
-            const payload: any = (entry as any)?.payload ?? {};
-            const sliceValue: number = typeof payload.value === 'number' ? payload.value : 0;
+          formatter={(value: string, entry: { color?: string; payload?: { value?: number } }) => {
+            const sliceValue: number = typeof entry.payload?.value === 'number' ? entry.payload!.value : 0;
             const percent = data.length > 0 ? (sliceValue / data.length) * 100 : 0;
             return (
-              <span style={{ color: (entry as any).color, fontSize: '12px' }}>
+              <span style={{ color: entry.color, fontSize: '12px' }}>
                 {value} ({percent.toFixed(1)}%)
               </span>
             );
