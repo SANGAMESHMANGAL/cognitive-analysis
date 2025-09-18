@@ -1,0 +1,21 @@
+# Root .gitignore
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.log
+.idea/
+.vscode/
+node_modules/
+dist/
+build/
+coverage/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.next/
+.turbo/
+.vercel/
+.pnpm-store/
