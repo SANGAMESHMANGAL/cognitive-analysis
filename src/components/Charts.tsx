@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ScatterChart, Scatter, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, PieChart, Pie, Cell, Legend } from 'recharts';
+import type { PieLabelRenderProps } from 'recharts';
 import { Student } from '@/lib/data';
 
 interface BarSkillVsScoreProps {
@@ -155,9 +156,9 @@ export function PersonaDistribution({ data }: PersonaDistributionProps) {
   }
 
   // Custom label function to handle small slices better
-  const renderCustomLabel = (props: any) => {
-    const percent: number = typeof props?.percent === 'number' ? props.percent : 0;
-    const name: string = typeof props?.name === 'string' ? props.name : '';
+  const renderCustomLabel = (props: PieLabelRenderProps) => {
+    const percent: number = typeof (props as any)?.percent === 'number' ? (props as any).percent : 0;
+    const name: string = typeof (props as any)?.name === 'string' ? (props as any).name : '';
     if (percent < 0.05) {
       return null;
     }
