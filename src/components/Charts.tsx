@@ -155,12 +155,13 @@ export function PersonaDistribution({ data }: PersonaDistributionProps) {
   }
 
   // Custom label function to handle small slices better
-  const renderCustomLabel = (entry: { name: string; percent: number }) => {
-    // Only show labels for slices larger than 5%
-    if (entry.percent < 0.05) {
+  const renderCustomLabel = (props: any) => {
+    const percent: number = typeof props?.percent === 'number' ? props.percent : 0;
+    const name: string = typeof props?.name === 'string' ? props.name : '';
+    if (percent < 0.05) {
       return null;
     }
-    return entry.name + ' ' + (entry.percent * 100).toFixed(0) + '%';
+    return name + ' ' + (percent * 100).toFixed(0) + '%';
   };
 
   return (
